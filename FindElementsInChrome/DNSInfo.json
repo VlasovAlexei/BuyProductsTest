@@ -1,0 +1,10 @@
+{
+  "url": "https://www.dns-shop.ru/",
+  "findFieldOfSearch": "//div[contains(@class, 'menu')]//input[@name='q']",
+  "findProductName": "iPhone 12",
+  "productId": "//div[@data-id='product'][1]",
+  "nameOfProduct": "//a[contains(@class,'catalog-product')]//span[contains(text(),'iPhone 12')]",
+  "buyButton": "//div[@data-id='product'][1]//button[contains(@class,'buy-btn')]",
+  "basketButton": "//span[@class='cart-link__lbl']",
+  "nameOfProductInBasket": "//div[@class = 'cart-items__product-name']//a[contains(text(),'iPhone 12')]"
+}
