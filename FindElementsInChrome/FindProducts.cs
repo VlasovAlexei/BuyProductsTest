@@ -1,63 +1,65 @@
 using System;
 using Xunit;
 using System.IO;
-using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
-using System.Text.Json;
+using Newtonsoft.Json;
+using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace FindElementsInChrome
 {
-    class Product
+    public class Page
     {
-        public string url { get; set; }
-        public string findFieldOfSearch { get; set; }
-        public string findProductName { get; set; }
-        public string productId { get; set; }
-        public string nameOfProduct { get; set; }
-        public string buyButton { get; set; }
-        public string basketButton { get; set; }
-        public string nameOfProductInBasket { get; set; }
+        public string Name { get; set; }
+        public Dictionary<String, String> XpathElements;
+    }
+
+    public class SiteConfiguration
+    {
+        public string Url { get; set; }
+        public List<Page> Pages;
     }
 
     public class TestsBase
     {
-
         [Theory]
         [InlineData(@"CitilinkInfo.json")]
         [InlineData(@"DNSInfo.json")]
 
-        public async void ShopTest(string pathToJsonFile)
+        public static void ShopTest(string pathToJsonFile)
         {
-            using (FileStream fs = new FileStream(pathToJsonFile, FileMode.OpenOrCreate))
-            {
-                Product restoredProduct = await JsonSerializer.DeserializeAsync<Product>(fs);
-                ChromeOptions options = new ChromeOptions();
-                options.AddArguments("--disable-notifications");
-                IWebDriver driver = new ChromeDriver(options);
-                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            var siteConfiguration = JsonConvert.DeserializeObject<SiteConfiguration>(File.ReadAllText(pathToJsonFile));
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("--disable-notifications");
+            options.PageLoadStrategy = PageLoadStrategy.Eager;
+            IWebDriver driver = new ChromeDriver(options);
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
-                driver.Navigate().GoToUrl(restoredProduct.url);
-                driver.Manage().Window.Maximize();
-                driver.FindElement(By.XPath(restoredProduct.findFieldOfSearch)).SendKeys(restoredProduct.findProductName);
-                driver.FindElement(By.XPath(restoredProduct.findFieldOfSearch)).SendKeys(Keys.Enter);
-                driver.FindElement(By.XPath(restoredProduct.productId));
-                Thread.Sleep(6000);
-                driver.FindElement(By.XPath(restoredProduct.productId)).Click();
-                var expectedResult = driver.FindElement(By.XPath(restoredProduct.nameOfProduct)).Text;
-                Thread.Sleep(6000);
-                driver.FindElement(By.XPath(restoredProduct.buyButton)).Click();
-                Thread.Sleep(6000);
-                driver.FindElement(By.XPath(restoredProduct.basketButton)).Click();
-                Thread.Sleep(6000);
-                var actualResult = driver.FindElement(By.XPath(restoredProduct.nameOfProductInBasket)).Text;
-                var actualCount = driver.FindElements(By.XPath(restoredProduct.nameOfProductInBasket)).Count;
+            driver.Navigate().GoToUrl(siteConfiguration.Url);
+            driver.Manage().Window.Maximize();
 
-                Assert.Contains(actualResult, expectedResult);
-                Assert.Equal(1, actualCount);
-                driver.Quit();
-            }
+
+            var productListPage = siteConfiguration.Pages.Where(p => p.Name == "ProductList").FirstOrDefault();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productListPage.XpathElements["findFieldOfSearch"]))).SendKeys("iPhone 12");
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productListPage.XpathElements["findFieldOfSearch"]))).SendKeys(Keys.Enter);
+
+            var productDetalesPage = siteConfiguration.Pages.Where(p => p.Name == "ProductDetails").FirstOrDefault();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productDetalesPage.XpathElements["productId"]))).Click();
+            var expectedResult = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productDetalesPage.XpathElements["nameOfProduct"]))).Text;
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productDetalesPage.XpathElements["buyButton"]))).Click();
+            Thread.Sleep(100);
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productDetalesPage.XpathElements["basketButton"]))).Click();
+
+            var actualResult = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productDetalesPage.XpathElements["nameOfProductInBasket"]))).Text;
+            var actualCount = driver.FindElements(By.XPath(productDetalesPage.XpathElements["nameOfProductInBasket"])).Count;
+
+            Assert.Contains(actualResult, expectedResult);
+            Assert.Equal(1, actualCount);
+            driver.Quit();
         }
     }
 }
