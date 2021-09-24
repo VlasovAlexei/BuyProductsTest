@@ -6,7 +6,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
 using System.Text.Json;
-
 namespace FindElementsInChrome
 {
     class Product
@@ -61,5 +60,3 @@ namespace FindElementsInChrome
         }
     }
 }
-
-
