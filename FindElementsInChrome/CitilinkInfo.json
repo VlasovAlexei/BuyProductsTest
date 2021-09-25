@@ -1,10 +1,19 @@
 {
-  "url": "https://www.citilink.ru/",
-  "findFieldOfSearch": "//div[contains(@class, 'MainHeader__search')]//input[@name='text']",
-  "findProductName": "iPhone 12",
-  "productId": "//div[@data-index='1']//a[contains(@class,' ProductCardVertical__link')]",
-  "nameOfProduct": "//h1[contains(text(),'iPhone 12')]",
-  "buyButton": "//div[contains(@class,'buy-button')]//button[contains(@class,'Button_with-icon')]",
-  "basketButton": "//div[@class='UpsaleBasket__header-link']//button[contains(@class,'UpsaleBasket__order')]",
-  "nameOfProductInBasket": "//a[@class='ProductCardForBasket__name  Link js--Link Link_type_default'][contains(text(), 'iPhone 12')]"
+  "Url": "https://www.citilink.ru/",
+  "Pages": [
+    {
+      "Name": "ProductList",
+      "XpathElements": { "findFieldOfSearch": "//div[contains(@class, 'MainHeader__search')]//input[@name='text']" }
+    },
+    {
+      "Name": "ProductDetails",
+      "XpathElements": {
+        "productId": "//div[@data-index='1']//a[contains(@class,' ProductCardVertical__link')]",
+        "nameOfProduct": "//h1[contains(text(),'iPhone 12')]",
+        "buyButton": "//div[contains(@class,'buy-button')]//button[contains(@class,'Button_with-icon')]",
+        "basketButton": "//div[@class='UpsaleBasket__header-link']//button[contains(@class,'UpsaleBasket__order')]",
+        "nameOfProductInBasket": "//a[@class='ProductCardForBasket__name  Link js--Link Link_type_default'][contains(text(), 'iPhone 12')]"
+      }
+    }
+  ]
 }
