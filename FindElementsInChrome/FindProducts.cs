@@ -26,8 +26,8 @@ namespace FindElementsInChrome
     public class TestsBase
     {
         [Theory]
-        [InlineData(@"CitilinkInfo.json")]
-        [InlineData(@"DNSInfo.json")]
+        [InlineData(@"JsonFiles\CitilinkInfo.json")]
+        [InlineData(@"JsonFiles\DNSInfo.json")]
 
         public static void ShopTest(string pathToJsonFile)
         {

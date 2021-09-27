@@ -12,10 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="CitilinkInfo.json">
+    <Content Include="JsonFiles\CitilinkInfo.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="DNSInfo.json">
+    <Content Include="JsonFiles\DNSInfo.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
