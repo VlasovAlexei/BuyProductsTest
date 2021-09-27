@@ -44,13 +44,13 @@ namespace FindElementsInChrome
             var productListPage = siteConfiguration.Pages.Where(p => p.Name == "ProductList").FirstOrDefault();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productListPage.XpathElements["findFieldOfSearch"]))).SendKeys("iPhone 12");
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productListPage.XpathElements["findFieldOfSearch"]))).SendKeys(Keys.Enter);
-            Thread.Sleep(200);
+            Thread.Sleep(1000);
 
             var productDetalesPage = siteConfiguration.Pages.Where(p => p.Name == "ProductDetails").FirstOrDefault();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productDetalesPage.XpathElements["productId"]))).Click();
             var expectedResult = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productDetalesPage.XpathElements["nameOfProduct"]))).Text;
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productDetalesPage.XpathElements["buyButton"]))).Click();
-            Thread.Sleep(200);
+            Thread.Sleep(1000);
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productDetalesPage.XpathElements["basketButton"]))).Click();
 
             var actualResult = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(productDetalesPage.XpathElements["nameOfProductInBasket"]))).Text;
