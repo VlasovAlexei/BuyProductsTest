@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlowProject.Features
+namespace OnlineMarketsSpecFlowTests.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,19 +19,21 @@ namespace SpecFlowProject.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [Xunit.TraitAttribute("Category", "DNS")]
     public partial class FindProductInDNSFeature : object, Xunit.IClassFixture<FindProductInDNSFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = ((string[])(null));
+        private string[] _featureTags = new string[] {
+                "DNS"};
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
 #line 1 "FindProductInDNS.feature"
 #line hidden
         
-        public FindProductInDNSFeature(FindProductInDNSFeature.FixtureData fixtureData, SpecFlowProject_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public FindProductInDNSFeature(FindProductInDNSFeature.FixtureData fixtureData, OnlineMarketsSpecFlowTests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,7 +42,8 @@ namespace SpecFlowProject.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "FindProductInDNS", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "FindProductInDNS", null, ProgrammingLanguage.CSharp, new string[] {
+                        "DNS"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -83,11 +86,9 @@ namespace SpecFlowProject.Features
         [Xunit.SkippableFactAttribute(DisplayName="TestSite_DNS")]
         [Xunit.TraitAttribute("FeatureTitle", "FindProductInDNS")]
         [Xunit.TraitAttribute("Description", "TestSite_DNS")]
-        [Xunit.TraitAttribute("Category", "DNS")]
         public virtual void TestSite_DNS()
         {
-            string[] tagsOfScenario = new string[] {
-                    "DNS"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TestSite_DNS", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 4

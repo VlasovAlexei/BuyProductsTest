@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindElementsInChrome", "FindElementsInChrome\FindElementsInChrome.csproj", "{F0461739-EFDC-4F2C-836E-0322BE404F07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineMarketsTests", "OnlineMarketsTests\OnlineMarketsTests.csproj", "{F0461739-EFDC-4F2C-836E-0322BE404F07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowProject", "SpecFlowProject\SpecFlowProject.csproj", "{399A42C5-C453-4D95-AC02-B74EE0FBD3BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarketsSpecFlowTests", "OnlineMarketsSpecFlowTests\OnlineMarketsSpecFlowTests.csproj", "{399A42C5-C453-4D95-AC02-B74EE0FBD3BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

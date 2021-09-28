@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FindElementsInChrome\FindElementsInChrome.csproj" />
+    <ProjectReference Include="..\OnlineMarketsTests\OnlineMarketsTests.csproj" />
   </ItemGroup>
 
 </Project>

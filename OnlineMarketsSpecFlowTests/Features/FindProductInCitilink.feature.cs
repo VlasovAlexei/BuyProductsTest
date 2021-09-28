@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlowProject.Features
+namespace OnlineMarketsSpecFlowTests.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,19 +19,21 @@ namespace SpecFlowProject.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [Xunit.TraitAttribute("Category", "Citilink")]
     public partial class FindProductInCitilinkFeature : object, Xunit.IClassFixture<FindProductInCitilinkFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = ((string[])(null));
+        private string[] _featureTags = new string[] {
+                "Citilink"};
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
 #line 1 "FindProductInCitilink.feature"
 #line hidden
         
-        public FindProductInCitilinkFeature(FindProductInCitilinkFeature.FixtureData fixtureData, SpecFlowProject_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public FindProductInCitilinkFeature(FindProductInCitilinkFeature.FixtureData fixtureData, OnlineMarketsSpecFlowTests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,7 +42,8 @@ namespace SpecFlowProject.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "FindProductInCitilink", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "FindProductInCitilink", null, ProgrammingLanguage.CSharp, new string[] {
+                        "Citilink"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -83,11 +86,9 @@ namespace SpecFlowProject.Features
         [Xunit.SkippableFactAttribute(DisplayName="TestSite_Citilink")]
         [Xunit.TraitAttribute("FeatureTitle", "FindProductInCitilink")]
         [Xunit.TraitAttribute("Description", "TestSite_Citilink")]
-        [Xunit.TraitAttribute("Category", "Citilink")]
         public virtual void TestSite_Citilink()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Citilink"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TestSite_Citilink", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 4
@@ -125,18 +126,30 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("remembered \"//h1[contains(text(),\'iPhone 12\')]\" of product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
+ testRunner.And("I get product name from product details page and put it in scenario context by na" +
+                        "me \'productNameFromProductPage\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 10
  testRunner.And("I click on \"//div[contains(@class,\'buy-button\')]//button[contains(@class,\'Button_" +
                         "with-icon\')]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 10
+#line 11
  testRunner.And("I click on  \"//div[@class=\'UpsaleBasket__header-link\']//button[contains(@class,\'U" +
                         "psaleBasket__order\')]\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 11
+#line 12
  testRunner.Then("I validate \"//a[@class=\'ProductCardForBasket__name  Link js--Link Link_type_defau" +
                         "lt\'][contains(text(), \'iPhone 12\')]\" the only one", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 12
+#line 13
+ testRunner.And("I get product name from basket page and put it in scenario context by name \'produ" +
+                        "ctNameFromBasketPage\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 14
+ testRunner.Then("I validate two scenario contexts have equal text \'productNameFromProductPage\', \'p" +
+                        "roductNameFromBasketPage\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 15
  testRunner.Then("I validate the name of product in basket \"//a[@class=\'ProductCardForBasket__name " +
                         " Link js--Link Link_type_default\'][contains(text(), \'iPhone 12\')]\" equals select" +
                         "ed name  \"//h1[contains(@class,\'ProductHeader__title\')]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
